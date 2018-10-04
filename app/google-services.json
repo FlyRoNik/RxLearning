@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "357741808174",
+    "firebase_url": "https://rxlearning-b75a5.firebaseio.com",
+    "project_id": "rxlearning-b75a5",
+    "storage_bucket": "rxlearning-b75a5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:357741808174:android:3df4de27ddac6b33",
+        "android_client_info": {
+          "package_name": "com.rxlearning"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "357741808174-l3s58bifsfbs5fpqhm1csv6rlji609h8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rxlearning",
+            "certificate_hash": "320a315d41c70c6532acf62c740e7ced6df4ef4f"
+          }
+        },
+        {
+          "client_id": "357741808174-7fjtc9cfvsinjossk29stnrpt3vgb1i6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzW5uyGJ6M07VkBXX6SOFK7sYb0mFUJaE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "357741808174-7fjtc9cfvsinjossk29stnrpt3vgb1i6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
