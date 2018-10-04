@@ -1,0 +1,100 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion as Integer
+    buildToolsVersion rootProject.ext.buildToolsVersion as String
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion as Integer
+        targetSdkVersion rootProject.ext.compileSdkVersion as Integer
+
+        applicationId "com.rxlearning"
+
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    //<editor-fold desc="version control">
+    def buildNoDevelop = 1
+    def buildNoProd = 1
+    def versionPropsFile = file('version.properties')
+
+    if (versionPropsFile.canRead()) {
+        def valueProd = 0
+        def valueDev = 0
+        def runTasks = gradle.startParameter.taskNames
+
+        if (':app:generateReleaseSources' in runTasks || ':app:businessCompileReleaseSources' in runTasks) {
+            valueProd = 1;
+        } else {
+            valueDev = 1;
+        }
+        def Properties versionProps = new Properties()
+
+        versionProps.load(new FileInputStream(versionPropsFile))
+        buildNoDevelop = versionProps['BUILD_NUMBER_DEVELOPMENT'].toInteger() + valueDev
+        buildNoProd = versionProps['BUILD_NUMBER_PRODUCTION'].toInteger() + valueProd
+
+        versionProps['BUILD_NUMBER_DEVELOPMENT'] = buildNoDevelop.toString()
+        versionProps['BUILD_NUMBER_PRODUCTION'] = buildNoProd.toString()
+
+        println(" debug str : DEV = ${buildNoDevelop}")
+        println(" debug str : REL = ${buildNoProd}")
+        versionProps.store(versionPropsFile.newWriter(), null)
+    }
+    //</editor-fold>
+
+    signingConfigs {
+        debug {
+            storeFile file("./debug.keystore")
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            debuggable true
+            versionNameSuffix "." + buildNoDevelop + " Development"
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        stage {
+            minifyEnabled true
+            debuggable false
+            versionNameSuffix "." + buildNoDevelop + " Stage"
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled true
+            debuggable false
+            versionNameSuffix "." + buildNoProd
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation supportDependencies.appCompat
+    implementation supportDependencies.recyclerView
+    implementation supportDependencies.design
+    implementation supportDependencies.cardview
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
