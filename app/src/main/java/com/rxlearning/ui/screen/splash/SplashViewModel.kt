@@ -26,7 +26,8 @@ class SplashViewModel(application: Application) : BaseViewModel(application) {
         Flowable.fromCallable {
             //TODO
 //            RxLearningApp.instance.getCurrentUser()?.let { ScreenType.MAIN } ?: ScreenType.AUTH
-            ScreenType.MAIN
+//            ScreenType.MAIN
+            ScreenType.AUTH
         }
                 .zipWith(Flowable.timer(DELAY_SPLASH_SECONDS, TimeUnit.SECONDS, Schedulers.io()),
                         BiFunction<ScreenType, Long, ScreenType> { type: ScreenType, _: Long -> type })

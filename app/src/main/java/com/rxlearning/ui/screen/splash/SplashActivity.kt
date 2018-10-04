@@ -7,6 +7,7 @@ import com.cleveroad.bootstrap.kotlin_core.utils.misc.isConnected
 import com.rxlearning.R
 import com.rxlearning.ui.base.BaseLifecycleActivity
 import com.rxlearning.ui.base.NoNetworkException
+import com.rxlearning.ui.screen.auth.AuthActivity
 import com.rxlearning.ui.screen.main.MainActivity
 
 class SplashActivity : BaseLifecycleActivity<SplashViewModel>() {
@@ -42,7 +43,7 @@ class SplashActivity : BaseLifecycleActivity<SplashViewModel>() {
     override fun onDialogResult(requestCode: Int, resultCode: Int, data: Intent) = showMainScreen()
 
     private fun showAuthScreen() {
-//        AuthActivity.start(this)
+        AuthActivity.start(this)
         finish()
     }
 
