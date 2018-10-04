@@ -43,4 +43,10 @@ ext {
             cardview    : "com.android.support:cardview-v7:${supportLibrary}",
     ]
 
+    liveDataVersion = '1.1.1'
+    roomVersion = '1.1.1'
+    glideVersion = '4.7.1'
+    anko_version = '0.10.4'
+    bootstrapVersion = '0.0.9'
+
 }

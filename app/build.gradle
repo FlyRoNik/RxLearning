@@ -100,11 +100,51 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
+    //  Crashlytics
     implementation 'com.google.firebase:firebase-core:16.0.4'
+    implementation('com.crashlytics.sdk.android:crashlytics:2.9.5@aar') { transitive = true }
 
-    implementation('com.crashlytics.sdk.android:crashlytics:2.9.5@aar') {
-        transitive = true;
-    }
+    //  rx
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.2.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+
+    //  ViewModel and LiveData
+    implementation "android.arch.lifecycle:extensions:$liveDataVersion"
+    kapt "android.arch.lifecycle:common-java8:$liveDataVersion"
+
+    //  room
+    implementation "android.arch.persistence.room:runtime:$roomVersion"
+    implementation "android.arch.persistence.room:rxjava2:$roomVersion"
+    kapt "android.arch.persistence.room:compiler:$roomVersion"
+
+    //  stetho
+    implementation 'com.facebook.stetho:stetho:1.5.0'
+
+    //  glide
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    kapt "com.github.bumptech.glide:compiler:$glideVersion"
+
+    //  bootstrap
+    implementation "com.cleveroad.bootstrap:kotlin-core:$bootstrapVersion"
+    implementation "com.cleveroad.bootstrap:kotlin-permissionrequest:$bootstrapVersion"
+    implementation "com.cleveroad.bootstrap:kotlin-validators:$bootstrapVersion"
+
+    //  Anko
+    implementation "org.jetbrains.anko:anko-commons:$anko_version"
+    implementation "org.jetbrains.anko:anko-common:$anko_version"
+    implementation "org.jetbrains.anko:anko:$anko_version"
+
+    //  Secure preferences
+    implementation 'com.scottyab:secure-preferences-lib:0.1.4'
+
+    //  Joda Time
+    implementation 'joda-time:joda-time:2.9.9'
+
+    //  Phone number
+    implementation 'com.googlecode.libphonenumber:libphonenumber:8.8.7'
+
+    //  Ahbottomnavigation
+    implementation 'com.aurelhubert:ahbottomnavigation:2.1.0'
 
 }
 

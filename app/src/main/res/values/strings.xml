@@ -1,3 +1,220 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">RxLearning</string>
+
+    <!--system-->
+    <string name="no_internet_connection">There is no internet connection</string>
+    <string name="server_error">Server error</string>
+
+    <!--message dialog-->
+    <string name="dialog_title_default">Error</string>
+    <string name="dialog_subtitle_default">Something went wrong</string>
+    <string name="dialog_ok">OK</string>
+
+    <!--choose screen-->
+    <string name="tab_log_in">Log in</string>
+    <string name="tab_register">Register</string>
+
+    <!--sign in screen-->
+    <string name="login_hint_email">Email</string>
+    <string name="login_hint_password">Password</string>
+    <string name="forgot_your_password">Forgot your password?</string>
+    <string name="btn_sign_in">Sign in</string>
+    <string name="email_is_empty">Email is required</string>
+    <string name="email_is_not_valid_format">Please enter a valid email address</string>
+    <string name="password_is_empty">Password is required</string>
+    <string name="password_max_length_error" tools:ignore="PluralsCandidate">Password can not exceed %d characters</string>
+    <string name="password_min_length_error" tools:ignore="PluralsCandidate">Password must be bigger or equal to %d characters</string>
+    <string name="password_is_invalid">Password can not contain spaces or cyrillic symbol</string>
+
+    <!--sign up screen-->
+    <string name="sign_up_hint_first_name">First Name</string>
+    <string name="sign_up_hint_last_name">Last Name</string>
+    <string name="sign_up_hint_email">Email</string>
+    <string name="sign_up_hint_phone_number">+44 7777 123456</string>
+    <string name="enter_your_mobile_number_to_receive_your_activation_code">Enter your mobile number to receive your activation code</string>
+    <string name="btn_sign_up">Sign up</string>
+    <string name="i_accept_the_terms_of_use">I accept the Terms of Use</string>
+    <string name="terms_of_use">Terms of Use</string>
+    <string name="name_is_empty">Name is required</string>
+    <string name="name_max_length_error" tools:ignore="PluralsCandidate">Name can not exceed %d characters</string>
+    <string name="name_is_invalid">Name can contain only latin characters</string>
+    <string name="terms_of_use_not_check">Please agree to Terms of Use</string>
+    <string name="phone_is_empty">Phone number is required</string>
+    <string name="phone_is_invalid">Phone number is invalid</string>
+    <string name="gb_phone_code">+44</string>
+    <string name="phone_plus">+</string>
+
+    <!--confirm screen-->
+    <string name="confirm_screen_title">Complete registration</string>
+    <string name="complete_registration_info">To complete your registration, please enter the 4-digit activation code.</string>
+    <string name="resend_sms">Resend SMS</string>
+    <string name="send_by_email">Send by Email</string>
+
+    <!--password screen-->
+    <string name="info_password_validation">Your password must be at least 6 characters long and\ncontain one capital letter.</string>
+    <string name="hint_password">Password</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="password_submit">Submit</string>
+    <string name="passwords_dont_match">Passwords don\'t match</string>
+    <string name="confirm_password_is_empty">Confirm password is required</string>
+    <string name="confirm_password_is_invalid">Confirm password can not contain spaces or cyrillic symbol</string>
+
+    <!--card screen-->
+    <string name="add_your_default_payment_method">Add your default payment method</string>
+    <string name="card_number">Card Number</string>
+    <string name="expiry_mm_yy">Expiry MM/YY</string>
+    <string name="cvc_cvv">CVC/CVV</string>
+    <string name="card_cvv_info">CVC/CVV is the last 3 digits on the back of your card (Amex 4 digits on front)</string>
+    <string name="save_card">Save Card</string>
+
+    <!--card validation-->
+    <string name="card_info_empty">Could not find payment information</string>
+    <string name="card_number_invalid">Your card\'s number is invalid</string>
+    <string name="card_exp_month_invalid">Your card\'s expiration month is invalid</string>
+    <string name="card_exp_year_invalid">Your card\'s expiration year is invalid</string>
+    <string name="card_security_code_invalid">Your card\'s security code is invalid</string>
+
+    <!--reset password screen-->
+    <string name="info_reset_password">Enter your registered email address to receive instructions on how to change your password.</string>
+    <string name="title_dialog_reset_password">Success</string>
+    <string name="subtitle_dialog_reset_password">Email with restore link is send to your email</string>
+
+    <!--info screen-->
+    <string name="title_terms_of_use">Terms of Use</string>
+    <string name="title_privacy_policy">Privacy Policy</string>
+
+    <!--navigation screen-->
+    <string name="item_home">HOME</string>
+    <string name="item_venues">VENUES</string>
+    <string name="item_receipts">RECEIPTS</string>
+    <string name="item_profile">PROFILE</string>
+    <string name="item_settings">SETTINGS</string>
+
+    <!--home screen-->
+    <string name="full_name_format">%s %s</string>
+
+    <!--profile screen-->
+    <string name="menu_item_save">Save</string>
+    <string name="menu_item_edit">Edit</string>
+    <string name="set_profile_photo">Set profile photo</string>
+    <string name="button_change_password">Change password</string>
+    <string name="button_log_out">Log out</string>
+    <string name="image_error">Uploaded file is not a valid image</string>
+
+    <!--change password screen-->
+    <string name="current_password">Current password</string>
+    <string name="new_password">New password</string>
+    <string name="confirm_new_password">Confirm new password</string>
+    <string name="title_dialog_change_password">Password Recovery</string>
+    <string name="subtitle_dialog_change_password">Your password has been changed</string>
+
+    <!--screen receipts-->
+    <string name="you_have_no_receipts_yet">You have no receipts yet</string>
+    <string name="receipt_header_date_pattern">d MMMM, EEEE</string>
+    <string name="receipt_time_pattern">H:mm</string>
+    <plurals name="receipt_type_cloakroom">
+        <item quantity="one">%1$d Cloakroom item, %2$s</item>
+        <item quantity="other">%1$d Cloakroom items, %2$s</item>
+    </plurals>
+    <string name="receipt_type_ticket">%1$d Door Entry, %2$s</string>
+    <string name="receipt_no_details">There are no details on this receipt</string>
+
+    <!--screen detail receipt-->
+    <string name="name_coat">Coat</string>
+    <string name="name_bag">Bag</string>
+    <string name="name_umbrella">Umbrella</string>
+    <string name="name_hanger">pqHanger</string>
+    <string name="name_tag">pqTag</string>
+    <string name="name_brolly">pqBrolly</string>
+    <string name="number_cell_format">%1$d x %2$s</string>
+    <string name="count_cell_format">%1$s %2$s</string>
+    <string name="door_entry">Door Entry</string>
+    <string name="cloakroom">Cloakroom</string>
+    <string name="prefix_door_entry_id">pqD %s</string>
+    <string name="prefix_cloakroom_id">pqC %s</string>
+    <string name="price_subtotal">Price subtotal</string>
+    <string name="pqfee">pqFee</string>
+    <string name="order_total">Order Total</string>
+    <string name="pqreceipt_number">pqReceipt Number</string>
+    <string name="receipt_id_format">00000</string>
+    <string name="receipt_detail_date_time_pattern">d MMMM, EEEE H:mm</string>
+    <string name="number_ticket_format">%1$d x %2$s</string>
+    <string name="ticket_standard">Standard Door Entry</string>
+    <string name="ticket_advance">Advance Door Entry</string>
+    <string name="price_per_person_format">%s per person</string>
+
+    <!--basic venue info-->
+    <string name="open_today">Open today: %s</string>
+    <string name="closed_today">Closed</string>
+    <string name="work_time_pattern">HH:mm</string>
+    <string name="open_today_pattern">%1$s - %2$s</string>
+
+    <!--search-->
+    <string name="hint_search">Search</string>
+    <string name="no_results_found">No Results Found</string>
+
+    <!--settings-->
+    <string name="payment_methods_button">Payment Methods</string>
+    <string name="privacy_policy_button">Privacy Policy</string>
+    <string name="terms_of_use_button">Terms of Use</string>
+    <string name="give_us_feedback_button">Give Us Feedback</string>
+
+    <!--feedback-->
+    <string name="title_feedback">Give Us Feedback</string>
+    <string name="subject">Subject</string>
+    <string name="your_message">Your message</string>
+    <string name="feedback_theme_is_empty">Feedback theme is required</string>
+    <string name="feedback_theme_length_error" tools:ignore="PluralsCandidate">Feedback theme can not exceed %d characters</string>
+    <string name="feedback_message_is_empty">Message text is required</string>
+    <string name="feedback_message_length_error" tools:ignore="PluralsCandidate">Feedback can not exceed %d characters</string>
+    <string name="feedback_send">Send</string>
+    <string name="title_dialog_feedback">Your feedback was sent</string>
+
+    <!--payment methods-->
+    <string name="title_payment_methods">Payment Methods</string>
+    <string name="title_payment_options">Payment Options</string>
+    <string name="add_new_card">Add New Card</string>
+    <string name="default_card">Default</string>
+    <string name="set_as_default_payment_method">Set as default payment method</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="curd_number_pattern">**** %s</string>
+    <string name="title_dialog_max_card_limit">Error</string>
+    <string name="subtitle_dialog_max_card_limit" tools:ignore="PluralsCandidate">You can not add more than %d cards</string>
+
+    <!--add card-->
+    <string name="save_as_new_payment_method">Save as new payment method</string>
+    <string name="title_new_card">New Card</string>
+
+    <!--venue detail-->
+    <string name="title_venue_detail">Venue Details</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+    <string name="sunday">Sunday</string>
+    <string name="price_info">Advance Entry is available on the day, from 10:00 to 20:00. From 20:00 onwards simply scan your pqCode on the door.</string>
+    <string name="how_many_people">How many people?</string>
+    <string name="for_vip_and_tables_please_call_us">For VIP and tables, please call us!</string>
+    <string name="contact_info">Contact info</string>
+    <string name="buy_advance_door_entry">Buy advance door entry</string>
+    <string name="distance_pattern">%.1f km from your current location</string>
+    <string name="quantity_people_default">1</string>
+    <string name="standard_price">Standard price</string>
+    <string name="advance_price">Advance price</string>
+    <string name="free_price">Free</string>
+    <string name="how_many_tickets">How many tickets</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="button_call">Call</string>
+
+    <!--pay ticket-->
+    <string name="title_payment">Payment</string>
+    <string name="your_order">Your order</string>
+    <string name="advance_door_entry_is_not_refundable">Advance Door Entry is not refundable.</string>
+    <string name="pay_ticket_payment_method">Payment method</string>
+    <string name="button_done">Done</string>
+    <string name="pay_ticket_success" tools:ignore="PluralsCandidate">Success! You have bought %d Advance Door Entry.</string>
+
 </resources>
