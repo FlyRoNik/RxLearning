@@ -2,20 +2,26 @@ package com.rxlearning.ui.screen.auth
 
 import android.content.Context
 import android.os.Bundle
-import com.google.firebase.FirebaseException
 import com.google.firebase.auth.PhoneAuthCredential
-import com.google.firebase.auth.PhoneAuthProvider
 import com.rxlearning.R
+import com.rxlearning.models.user.SignUp
 import com.rxlearning.ui.base.BaseLifecycleActivity
+import com.rxlearning.ui.screen.auth.choose.ChooseFragment
+import com.rxlearning.ui.screen.auth.confirm.ConfirmCallback
+import com.rxlearning.ui.screen.auth.confirm.ConfirmFragment
+import com.rxlearning.ui.screen.auth.password.PasswordCallback
+import com.rxlearning.ui.screen.auth.password.PasswordFragment
+import com.rxlearning.ui.screen.auth.sign_in.SignInCallback
+import com.rxlearning.ui.screen.auth.sign_up.SignUpCallback
+import com.rxlearning.ui.screen.info.InfoFragment
+import com.rxlearning.ui.screen.info.TypeInfo
+import com.rxlearning.ui.screen.main.MainActivity
 import org.jetbrains.anko.clearTask
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.newTask
-import org.jetbrains.anko.toast
-import java.util.concurrent.TimeUnit
 
-class AuthActivity : BaseLifecycleActivity<AuthViewModel>()
-//        ,SignInCallback, SignUpCallback, ConfirmCallback, PasswordCallback, CardCallback
-{
+class AuthActivity : BaseLifecycleActivity<AuthViewModel>(), SignInCallback,
+        SignUpCallback, ConfirmCallback, PasswordCallback {
     override val viewModelClass = AuthViewModel::class.java
     override val containerId = R.id.container
     override val layoutId = R.layout.activity_auth
@@ -31,18 +37,6 @@ class AuthActivity : BaseLifecycleActivity<AuthViewModel>()
         }
     }
 
-    val callback = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-        override fun onVerificationCompleted(p0: PhoneAuthCredential?) {
-            //TODO
-            toast(p0?.smsCode ?: "")
-        }
-
-        override fun onVerificationFailed(p0: FirebaseException?) {
-            //TODO
-            toast(p0?.message ?: "")
-        }
-    }
-
     override fun observeLiveData() {
         //Do nothing
     }
@@ -51,37 +45,32 @@ class AuthActivity : BaseLifecycleActivity<AuthViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        replaceFragment(ChooseFragment.newInstance(), false)
-        PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                "+380671148073",        // Phone number to verify
-                60,                 // Timeout duration
-                TimeUnit.SECONDS,   // Unit of timeout
-                this,               // Activity (for callback binding)
-                callback)
+        replaceFragment(ChooseFragment.newInstance(), false)
     }
 
-//    override fun showConfirmScreen(token: String, signUp: SignUp) {
-//        replaceFragment(ConfirmFragment.newInstance(token, signUp))
-//    }
-//
-//    override fun showMainScreen() {
-//        MainActivity.start(this)
-//        finish()
-//    }
-//
-//    override fun showPasswordScreen(token: String) {
-//        replaceFragment(PasswordFragment.newInstance(token))
-//    }
-//
-//    override fun showCardScreen(token: String) {
-//        replaceFragment(CardFragment.newInstance(token))
-//    }
-//
-//    override fun showForgotPassword() {
+    //<editor-fold desc="SignInCallback">
+    override fun showMainScreen() {
+        MainActivity.start(this)
+        finish()
+    }
+
+    override fun showForgotPassword() {
 //        replaceFragment(ResetPasswordFragment.newInstance())
-//    }
-//
-//    override fun showTermsOfUseScreen() {
-//        replaceFragment(InfoFragment.newInstance(TypeInfo.TERMS_OF_USE))
-//    }
+    }
+    //</editor-fold>
+
+    //<editor-fold desc="SignUpCallback">
+    override fun showConfirmScreen(token: String, signUp: SignUp) {
+        replaceFragment(ConfirmFragment.newInstance(token, signUp))
+    }
+
+    override fun showTermsOfUseScreen() {
+        replaceFragment(InfoFragment.newInstance(TypeInfo.TERMS_OF_USE))
+    }
+    //</editor-fold>
+
+    override fun showPasswordScreen(credential: PhoneAuthCredential, signUp: SignUp) {
+        replaceFragment(PasswordFragment.newInstance(credential, signUp))
+    }
+
 }

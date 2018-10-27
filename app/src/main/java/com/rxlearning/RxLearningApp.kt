@@ -7,6 +7,8 @@ import android.support.annotation.RawRes
 import android.support.annotation.StringRes
 import android.support.v4.content.res.ResourcesCompat
 import com.crashlytics.android.Crashlytics
+import com.facebook.stetho.Stetho
+import com.google.firebase.auth.FirebaseAuth
 import io.fabric.sdk.android.Fabric
 
 class RxLearningApp : Application() {
@@ -16,13 +18,22 @@ class RxLearningApp : Application() {
             private set
     }
 
+    lateinit var auth: FirebaseAuth
+        private set
+
     override fun onCreate() {
         super.onCreate()
         instance = this
-        if (BuildConfig.DEBUG) Fabric.with(this, Crashlytics())
+        auth = FirebaseAuth.getInstance()
+        if (!BuildConfig.DEBUG) {
+            Fabric.with(this, Crashlytics())
+            Stetho.initializeWithDefaults(this)
+        }
 //        DatabaseCreator.createDb(this)
-//        Stetho.initializeWithDefaults(this)
     }
+
+    fun getCurrentUser() = auth.currentUser
+
 }
 
 fun readRawResource(@RawRes rawResource: Int) = RxLearningApp.instance.resources.openRawResource(rawResource).bufferedReader().use { it.readText() }

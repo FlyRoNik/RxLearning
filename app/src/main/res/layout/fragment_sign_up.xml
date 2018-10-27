@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/edit_text_container_height">
+
+                        <ImageView
+                            android:layout_width="@dimen/image_size_24"
+                            android:layout_height="@dimen/image_size_24"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="20dp"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ic_user_blue_24dp"
+                            tools:ignore="ContentDescription"/>
+
+                        <EditText
+                            android:id="@+id/etFirstName"
+                            style="@style/RobotoRegularCharcoalXSmallTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:background="@android:color/transparent"
+                            android:hint="@string/sign_up_hint_first_name"
+                            android:inputType="textPersonName|textCapSentences"
+                            android:maxLength="@integer/max_name_length"
+                            android:paddingBottom="15dp"
+                            android:paddingEnd="15dp"
+                            android:paddingStart="60dp"
+                            android:paddingTop="15dp"/>
+
+                    </FrameLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_line_divider"
+                        android:layout_marginStart="60dp"
+                        android:background="@color/bg_black_1f"/>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/edit_text_container_height">
+
+                        <ImageView
+                            android:layout_width="@dimen/image_size_24"
+                            android:layout_height="@dimen/image_size_24"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="20dp"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ic_user_blue_24dp"
+                            tools:ignore="ContentDescription"/>
+
+                        <EditText
+                            android:id="@+id/etLastName"
+                            style="@style/RobotoRegularCharcoalXSmallTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:background="@android:color/transparent"
+                            android:hint="@string/sign_up_hint_last_name"
+                            android:inputType="textPersonName|textCapSentences"
+                            android:maxLength="@integer/max_name_length"
+                            android:paddingBottom="15dp"
+                            android:paddingEnd="15dp"
+                            android:paddingStart="60dp"
+                            android:paddingTop="15dp"/>
+
+                    </FrameLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_line_divider"
+                        android:layout_marginStart="60dp"
+                        android:background="@color/bg_black_1f"/>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/edit_text_container_height">
+
+                        <ImageView
+                            android:layout_width="@dimen/image_size_24"
+                            android:layout_height="@dimen/image_size_24"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="20dp"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ic_mail_24dp"
+                            tools:ignore="ContentDescription"/>
+
+                        <EditText
+                            android:id="@+id/etEmail"
+                            style="@style/RobotoRegularCharcoalXSmallTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:background="@android:color/transparent"
+                            android:hint="@string/sign_up_hint_email"
+                            android:inputType="textEmailAddress"
+                            android:maxLength="@integer/max_email_length"
+                            android:paddingBottom="15dp"
+                            android:paddingEnd="15dp"
+                            android:paddingStart="60dp"
+                            android:paddingTop="15dp"/>
+
+                    </FrameLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="10dp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edit_text_container_height">
+
+                    <ImageView
+                        android:layout_width="@dimen/image_size_24"
+                        android:layout_height="@dimen/image_size_24"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="20dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ic_phone_blue_24dp"
+                        tools:ignore="ContentDescription"/>
+
+                    <EditText
+                        android:id="@+id/etPhone"
+                        style="@style/RobotoRegularCharcoalXSmallTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@android:color/transparent"
+                        android:hint="@string/sign_up_hint_phone_number"
+                        android:inputType="phone"
+                        android:maxLength="@integer/max_phone_length"
+                        android:paddingBottom="15dp"
+                        android:paddingEnd="15dp"
+                        android:paddingStart="60dp"
+                        android:paddingTop="15dp"/>
+
+                </FrameLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <TextView
+                style="@style/RobotoRegularCharcoal9AXXXSmallTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:text="@string/enter_your_mobile_number_to_receive_your_activation_code"/>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cbTermsOfUse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/CelestialBlueCheckBoxStyle"/>
+
+                <TextView
+                    android:id="@+id/tvTextInfo"
+                    style="@style/RobotoRegularCharcoalXSmallTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    tools:text="@string/i_accept_the_terms_of_use"/>
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_bottom_height"
+                android:background="@color/bg_darkCerulean">
+
+                <TextView
+                    android:id="@+id/tvSignUp"
+                    style="@style/RobotoRegularWhiteXSmallTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:text="@string/btn_sign_up"
+                    android:textAllCaps="true"
+                    tools:ignore="KeyboardInaccessibleWidget"/>
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</FrameLayout>

@@ -4,6 +4,8 @@ import java.util.*
 
 const val EMPTY_STRING_VALUE = ""
 
+const val TIMEOUT_IN_SECONDS = 30L
+
 const val DB_VERSION = 1
 
 const val KEYBOARD_VISIBLE_THRESHOLD_DP = 300

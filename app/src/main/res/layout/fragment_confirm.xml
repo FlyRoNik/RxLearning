@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <include layout="@layout/include_toolbar"/>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:fillViewport="true"
+        tools:ignore="UnknownIdInLayout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvInfo"
+                style="@style/RobotoRegularCharcoalXLargeTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="24dp"
+                android:gravity="center"
+                android:text="@string/complete_registration_info"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="50dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/etFirstDigit"
+                    style="@style/RobotoRegularCharcoalXXXXLargeTextStyle"
+                    android:layout_width="@dimen/edit_text_digit_width"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:theme="@style/SeaBlueEditTextStyle"
+                    tools:ignore="LabelFor"
+                    tools:text="5"/>
+
+                <EditText
+                    android:id="@+id/etSecondDigit"
+                    style="@style/RobotoRegularCharcoalXXXXLargeTextStyle"
+                    android:layout_width="@dimen/edit_text_digit_width"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:theme="@style/SeaBlueEditTextStyle"
+                    tools:ignore="LabelFor"
+                    tools:text="5"/>
+
+                <EditText
+                    android:id="@+id/etThirdDigit"
+                    style="@style/RobotoRegularCharcoalXXXXLargeTextStyle"
+                    android:layout_width="@dimen/edit_text_digit_width"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:theme="@style/SeaBlueEditTextStyle"
+                    tools:ignore="LabelFor"
+                    tools:text="5"/>
+
+                <EditText
+                    android:id="@+id/etFourthDigit"
+                    style="@style/RobotoRegularCharcoalXXXXLargeTextStyle"
+                    android:layout_width="@dimen/edit_text_digit_width"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:labelFor="@id/tvInfo"
+                    android:maxLength="1"
+                    android:theme="@style/SeaBlueEditTextStyle"
+                    tools:ignore="LabelFor"
+                    tools:text="5"/>
+
+                <EditText
+                    android:id="@+id/etFifthDigit"
+                    style="@style/RobotoRegularCharcoalXXXXLargeTextStyle"
+                    android:layout_width="@dimen/edit_text_digit_width"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:labelFor="@id/tvInfo"
+                    android:maxLength="1"
+                    android:theme="@style/SeaBlueEditTextStyle"
+                    tools:ignore="LabelFor"
+                    tools:text="5"/>
+
+                <EditText
+                    android:id="@+id/etSixthDigit"
+                    style="@style/RobotoRegularCharcoalXXXXLargeTextStyle"
+                    android:layout_width="@dimen/edit_text_digit_width"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:labelFor="@id/tvInfo"
+                    android:maxLength="1"
+                    android:theme="@style/SeaBlueEditTextStyle"
+                    tools:ignore="LabelFor"
+                    tools:text="5"/>
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_bottom_height"
+                android:background="@color/bg_darkCerulean">
+
+                <TextView
+                    android:id="@+id/tvResend"
+                    style="@style/RobotoRegularWhiteXSmallTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:text="@string/resend_sms"
+                    android:textAllCaps="true"
+                    tools:ignore="KeyboardInaccessibleWidget"/>
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</RelativeLayout>
