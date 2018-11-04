@@ -100,8 +100,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    //  Crashlytics
-    implementation 'com.google.firebase:firebase-core:16.0.4'
+    //  Catalytic
     implementation('com.crashlytics.sdk.android:crashlytics:2.9.5@aar') { transitive = true }
 
     //  rx
@@ -146,7 +145,10 @@ dependencies {
     //  Ahbottomnavigation
     implementation 'com.aurelhubert:ahbottomnavigation:2.1.0'
 
-    implementation 'com.google.firebase:firebase-auth:16.0.4'
+    //  Firebase
+    implementation "com.google.firebase:firebase-core:16.0.5"
+    implementation "com.google.firebase:firebase-auth:16.0.5"
+    implementation "com.google.firebase:firebase-database:16.0.4"
 
 }
 
