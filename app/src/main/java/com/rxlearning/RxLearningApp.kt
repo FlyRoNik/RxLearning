@@ -9,6 +9,7 @@ import android.support.v4.content.res.ResourcesCompat
 import com.crashlytics.android.Crashlytics
 import com.facebook.stetho.Stetho
 import com.google.firebase.auth.FirebaseAuth
+import com.rxlearning.ui.screen.auth.AuthActivity
 import io.fabric.sdk.android.Fabric
 
 class RxLearningApp : Application() {
@@ -33,6 +34,12 @@ class RxLearningApp : Application() {
     }
 
     fun getCurrentUser() = auth.currentUser
+
+    fun onLogout() {
+        auth.signOut()
+//        clearDatabase()
+        AuthActivity.start(this)
+    }
 
 }
 

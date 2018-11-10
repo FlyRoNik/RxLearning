@@ -13,6 +13,7 @@ interface User : BaseParcelable {
     var email: String?
     var phone: String?
     var role: RoleType?
+    var avatar: String?
 }
 
 data class UserModel(override var id: String? = null,
@@ -20,16 +21,17 @@ data class UserModel(override var id: String? = null,
                      override var lastName: String? = EMPTY_STRING_VALUE,
                      override var email: String? = EMPTY_STRING_VALUE,
                      override var phone: String? = EMPTY_STRING_VALUE,
-                     override var role: RoleType? = RoleType.STUDENT) : User {
+                     override var role: RoleType? = RoleType.STUDENT,
+                     override var avatar: String? = EMPTY_STRING_VALUE) : User {
 
     companion object {
         @JvmField
         val CREATOR = BaseParcelable.generateCreator {
-            UserModel(it.read(), it.read(), it.read(), it.read(), it.read(), it.read())
+            UserModel(it.read(), it.read(), it.read(), it.read(), it.read(), it.read(), it.read())
         }
     }
 
     override fun writeToParcel(dest: Parcel, flags: Int) = dest.write(id, firstName, lastName, email,
-            phone, role)
+            phone, role, avatar)
 
 }

@@ -1,22 +1,20 @@
 package com.rxlearning.ui.screen.main
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-import com.rxlearning.FIREBASE_RDB_USERS_KEY
 import com.rxlearning.R
-import com.rxlearning.RxLearningApp
-import com.rxlearning.models.user.UserModel
 import com.rxlearning.ui.base.BaseLifecycleActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import com.rxlearning.ui.screen.info.InfoFragment
+import com.rxlearning.ui.screen.info.TypeInfo
+import com.rxlearning.ui.screen.main.navigation.NavigationCallback
+import com.rxlearning.ui.screen.main.navigation.NavigationFragment
 import org.jetbrains.anko.clearTask
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.newTask
+import org.jetbrains.anko.toast
 
-class MainActivity : BaseLifecycleActivity<MainViewModel>() {
+class MainActivity : BaseLifecycleActivity<MainViewModel>(), NavigationCallback {
     override val viewModelClass = MainViewModel::class.java
     override val containerId = R.id.container
     override val layoutId = R.layout.activity_main
@@ -40,23 +38,32 @@ class MainActivity : BaseLifecycleActivity<MainViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //TODO example for getting
-        RxLearningApp.instance.getCurrentUser()?.let{
-            FirebaseDatabase.getInstance().reference
-                    .child(FIREBASE_RDB_USERS_KEY)
-                    .child(it.uid)
-                    .addListenerForSingleValueEvent(object : ValueEventListener {
-                        override fun onDataChange(data: DataSnapshot) {
-                            tvName.text = data.getValue(UserModel::class.java)?.firstName
-                        }
-
-                        override fun onCancelled(error: DatabaseError) {
-                            //
-                        }
-
-                    })
-
-        }
-
+        replaceFragment(NavigationFragment.newInstance(), false)
     }
+
+    override fun onStartActivityForResult(intent: Intent, requestCode: Int) {
+        startActivityForResult(intent, requestCode)
+    }
+
+    override fun showChangePasswordScreen() {
+        toast("Not implemented")
+        //TODO need implement
+//        replaceFragment(ChangePasswordFragment.newInstance())
+    }
+
+    override fun showPrivacyPolicyScreen() {
+        replaceFragment(InfoFragment.newInstance(TypeInfo.PRIVACY_POLICY))
+    }
+
+    override fun showTermsOfUseScreen() {
+        replaceFragment(InfoFragment.newInstance(TypeInfo.TERMS_OF_USE))
+    }
+
+    override fun showFeedbackScreen() {
+        toast("Not implemented")
+        //TODO need implement
+//        replaceFragment(FeedbackFragment.newInstance())
+    }
+
+
 }

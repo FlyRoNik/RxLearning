@@ -67,7 +67,7 @@ class SignUpFragment : BaseLifecycleFragment<SignUpViewModel>(), View.OnClickLis
             setOnFocusChangeListener { v, hasFocus ->
                 with(v as EditText) {
                     if (hasFocus && text.isEmpty()) {
-                        setText(getString(R.string.gb_phone_code))
+                        setText(getString(R.string.ua_phone_code))
                         setSelection(length())
                     }
                 }
