@@ -11,6 +11,7 @@ import com.rxlearning.ui.screen.auth.confirm.ConfirmCallback
 import com.rxlearning.ui.screen.auth.confirm.ConfirmFragment
 import com.rxlearning.ui.screen.auth.password.PasswordCallback
 import com.rxlearning.ui.screen.auth.password.PasswordFragment
+import com.rxlearning.ui.screen.auth.reset_password.ResetPasswordFragment
 import com.rxlearning.ui.screen.auth.sign_in.SignInCallback
 import com.rxlearning.ui.screen.auth.sign_up.SignUpCallback
 import com.rxlearning.ui.screen.info.InfoFragment
@@ -55,7 +56,7 @@ class AuthActivity : BaseLifecycleActivity<AuthViewModel>(), SignInCallback,
     }
 
     override fun showForgotPassword() {
-//        replaceFragment(ResetPasswordFragment.newInstance())
+        replaceFragment(ResetPasswordFragment.newInstance())
     }
     //</editor-fold>
 

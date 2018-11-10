@@ -2,6 +2,7 @@ package com.rxlearning.ui.screen.auth.confirm
 
 import android.app.Application
 import android.arch.lifecycle.MutableLiveData
+import com.google.android.gms.tasks.TaskExecutors
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
@@ -25,7 +26,7 @@ class ConfirmViewModel(application: Application) : BaseViewModel(application) {
                 signUp.phone,
                 TIMEOUT_IN_SECONDS,
                 TimeUnit.SECONDS,
-                { it.run() },
+                TaskExecutors.MAIN_THREAD,
                 object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
                     override fun onVerificationCompleted(credential: PhoneAuthCredential) {
                         //do nothing
