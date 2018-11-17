@@ -4,6 +4,7 @@ import android.arch.lifecycle.Observer
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import com.rxlearning.BuildConfig
 import com.rxlearning.R
 import com.rxlearning.extensions.getStringText
 import com.rxlearning.extensions.setClickListeners
@@ -38,6 +39,10 @@ class SignInFragment : BaseLifecycleFragment<SignInViewModel>(), View.OnClickLis
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setClickListeners(ivTriggerPasswordVisible, tvSignIn, tvForgotPassword)
+        if (BuildConfig.DEBUG) {
+            etEmail.setText("nnikita.frolov@gmail.com")
+            etPassword.setText("123456")
+        }
     }
 
     override fun onDetach() {

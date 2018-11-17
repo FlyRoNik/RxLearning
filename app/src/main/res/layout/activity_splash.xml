@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        style="@style/RobotoBoldWhiteXXXXXLargeTextStyle"
+        style="@style/RobotoRegularWhiteXXXXXLargeTextStyle"
         android:id="@+id/tvLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

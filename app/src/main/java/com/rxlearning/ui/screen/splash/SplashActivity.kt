@@ -40,7 +40,7 @@ class SplashActivity : BaseLifecycleActivity<SplashViewModel>() {
         if (savedInstanceState == null) viewModel.checkCurrentSession()
     }
 
-    override fun onDialogResult(requestCode: Int, resultCode: Int, data: Intent) = showMainScreen()
+    override fun onDialogResult(requestCode: Int, resultCode: Int, data: Intent) = onBackPressed()
 
     private fun showAuthScreen() {
         AuthActivity.start(this)

@@ -172,6 +172,11 @@
         <item name="android:textColor">@color/text_white</item>
     </style>
 
+    <style name="RobotoRegularWhiteXXXXXLargeTextStyle" parent="RobotoRegularTextStyle">
+        <item name="android:textSize">@dimen/xxxxx_large_text</item>
+        <item name="android:textColor">@color/text_white</item>
+    </style>
+
     <style name="RobotoBoldSeaBlueXSmallTextStyle" parent="RobotoBoldTextStyle">
         <item name="android:textSize">@dimen/x_small_text</item>
         <item name="android:textColor">@color/text_seaBlue</item>

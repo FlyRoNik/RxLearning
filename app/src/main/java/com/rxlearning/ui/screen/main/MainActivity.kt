@@ -7,6 +7,7 @@ import com.rxlearning.R
 import com.rxlearning.ui.base.BaseLifecycleActivity
 import com.rxlearning.ui.screen.info.InfoFragment
 import com.rxlearning.ui.screen.info.TypeInfo
+import com.rxlearning.ui.screen.main.change_password.ChangePasswordFragment
 import com.rxlearning.ui.screen.main.navigation.NavigationCallback
 import com.rxlearning.ui.screen.main.navigation.NavigationFragment
 import org.jetbrains.anko.clearTask
@@ -46,9 +47,7 @@ class MainActivity : BaseLifecycleActivity<MainViewModel>(), NavigationCallback 
     }
 
     override fun showChangePasswordScreen() {
-        toast("Not implemented")
-        //TODO need implement
-//        replaceFragment(ChangePasswordFragment.newInstance())
+        replaceFragment(ChangePasswordFragment.newInstance())
     }
 
     override fun showPrivacyPolicyScreen() {
