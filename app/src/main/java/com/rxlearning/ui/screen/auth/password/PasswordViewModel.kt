@@ -5,11 +5,11 @@ import android.arch.lifecycle.MutableLiveData
 import com.cleveroad.bootstrap.kotlin_validators.MatchValidator
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.database.FirebaseDatabase
-import com.rxlearning.FIREBASE_RDB_USERS_KEY
 import com.rxlearning.RxLearningApp
 import com.rxlearning.models.user.RoleType
 import com.rxlearning.models.user.SignUp
 import com.rxlearning.models.user.UserModel
+import com.rxlearning.network.USERS_KEY
 import com.rxlearning.ui.base.BaseViewModel
 import com.rxlearning.utils.matchPasswordValidator
 
@@ -32,7 +32,7 @@ class PasswordViewModel(application: Application) : BaseViewModel(application) {
                                             task.result?.user?.let {
                                                 with(signUp) {
                                                     FirebaseDatabase.getInstance().reference
-                                                            .child(FIREBASE_RDB_USERS_KEY)
+                                                            .child(USERS_KEY)
                                                             .child(it.uid)
                                                             .setValue(UserModel(it.uid, firstName, lastName, email, phone, RoleType.STUDENT))
                                                             .addOnCompleteListener { taskDB ->

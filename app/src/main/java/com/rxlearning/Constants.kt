@@ -15,5 +15,3 @@ const val MAX_SIZE_IMAGE = 3.0 * 1024.0 * 1024.0
 const val PAGE_LIMIT = 20
 
 const val MILLISECONDS = 1000
-
-const val FIREBASE_RDB_USERS_KEY = "users"

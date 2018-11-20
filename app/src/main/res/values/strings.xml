@@ -86,7 +86,7 @@
     <!--navigation screen-->
     <string name="item_home">HOME</string>
     <string name="item_venues">VENUES</string>
-    <string name="item_receipts">RECEIPTS</string>
+    <string name="item_receipts">SUBJECTS</string>
     <string name="item_profile">PROFILE</string>
     <string name="item_settings">SETTINGS</string>
 

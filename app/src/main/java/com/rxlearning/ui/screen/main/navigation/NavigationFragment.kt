@@ -19,6 +19,7 @@ import com.rxlearning.ui.screen.main.navigation.profile.ProfileCallback
 import com.rxlearning.ui.screen.main.navigation.profile.ProfileFragment
 import com.rxlearning.ui.screen.main.navigation.settings.SettingsCallback
 import com.rxlearning.ui.screen.main.navigation.settings.SettingsFragment
+import com.rxlearning.ui.screen.main.navigation.subjects.SubjectsFragment
 import kotlinx.android.synthetic.main.fragment_navigation.*
 import org.jetbrains.anko.support.v4.ctx
 
@@ -60,6 +61,7 @@ class NavigationFragment : BaseLifecycleFragment<NavigationViewModel>(), Profile
         with(bnPagerController) {
             addItems(listOf(
                     AHBottomNavigationItem(getString(R.string.item_home), R.drawable.ic_home_white_active_24dp),
+                    AHBottomNavigationItem(getString(R.string.item_receipts), R.drawable.ic_receipts_white_active_24dp),
                     AHBottomNavigationItem(getString(R.string.item_profile), R.drawable.ic_profile_white_active_24dp),
                     AHBottomNavigationItem(getString(R.string.item_settings), R.drawable.ic_settings_white_active_24dp)
             ))
@@ -125,6 +127,7 @@ class NavigationFragment : BaseLifecycleFragment<NavigationViewModel>(), Profile
 
     private fun getPagesList() = mutableListOf<FragmentInfoContainer>().apply {
         add(FragmentInfoContainer(HomeFragment::class.java))
+        add(FragmentInfoContainer(SubjectsFragment::class.java))
         add(FragmentInfoContainer(ProfileFragment::class.java))
         add(FragmentInfoContainer(SettingsFragment::class.java))
     }

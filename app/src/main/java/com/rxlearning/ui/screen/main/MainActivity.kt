@@ -10,12 +10,13 @@ import com.rxlearning.ui.screen.info.TypeInfo
 import com.rxlearning.ui.screen.main.change_password.ChangePasswordFragment
 import com.rxlearning.ui.screen.main.navigation.NavigationCallback
 import com.rxlearning.ui.screen.main.navigation.NavigationFragment
+import com.rxlearning.ui.screen.main.navigation.subjects.SubjectsCallback
 import org.jetbrains.anko.clearTask
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.newTask
 import org.jetbrains.anko.toast
 
-class MainActivity : BaseLifecycleActivity<MainViewModel>(), NavigationCallback {
+class MainActivity : BaseLifecycleActivity<MainViewModel>(), NavigationCallback, SubjectsCallback {
     override val viewModelClass = MainViewModel::class.java
     override val containerId = R.id.container
     override val layoutId = R.layout.activity_main
