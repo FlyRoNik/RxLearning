@@ -10,7 +10,9 @@ import com.rxlearning.network.STUDENTS_KEY
 import com.rxlearning.network.bean.GroupBean
 import com.rxlearning.network.converters.GroupBeanConverterImpl
 import com.rxlearning.ui.base.BaseViewModel
+import durdinapps.rxfirebase2.RxFirestore
 import io.reactivex.functions.Consumer
+import io.reactivex.rxkotlin.addTo
 
 class SubjectsViewModel(application: Application) : BaseViewModel(application) {
     private val groupBeanConverter = GroupBeanConverterImpl()
@@ -26,23 +28,18 @@ class SubjectsViewModel(application: Application) : BaseViewModel(application) {
 
     fun loadSubjects() {
         refreshLiveData.value = true
-        FirebaseFirestore.getInstance()
+        val query = FirebaseFirestore.getInstance()
                 .collection(GROUPS_KEY)
                 .whereArrayContains(STUDENTS_KEY, RxLearningApp.instance.getCurrentUser()?.uid
                         ?: "")
-                .get()
-                .addOnCompleteListener {
-                    if (it.isSuccessful) {
-                        val subjects: List<Subject> = it.result?.toObjects(GroupBean::class.java)
-                                ?.let { group -> groupBeanConverter.convertListInToOut(group) }
-                                ?.mapNotNull { group -> group.subjects }
-                                ?.flatten() ?: listOf()
-                        loadSubjectsLiveData.postValue(subjects)
-                        refreshLiveData.value = false
-                    } else {
-                        refreshErrorConsumer.accept(it.exception)
-                    }
-                }
+        RxFirestore.getCollection(query, GroupBean::class.java)
+                .map(groupBeanConverter::convertListInToOut)
+                .subscribe({
+                    loadSubjectsLiveData.value = it.mapNotNull { group -> group.subjects }.flatten()
+                    refreshLiveData.value = false
+                }, refreshErrorConsumer::accept)
+                .addTo(compositeDisposable)
+
     }
 
     fun loadSubjectDetail(subject: Subject) {

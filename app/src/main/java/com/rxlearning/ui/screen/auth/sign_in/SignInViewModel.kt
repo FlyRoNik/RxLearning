@@ -7,6 +7,8 @@ import com.rxlearning.RxLearningApp
 import com.rxlearning.ui.base.BaseViewModel
 import com.rxlearning.utils.emailValidator
 import com.rxlearning.utils.passwordValidator
+import durdinapps.rxfirebase2.RxFirebaseAuth
+import io.reactivex.rxkotlin.addTo
 
 class SignInViewModel(application: Application) : BaseViewModel(application) {
     private val emailValidator: Validator by lazy { emailValidator(application) }
@@ -17,14 +19,9 @@ class SignInViewModel(application: Application) : BaseViewModel(application) {
     fun signIn(email: String, password: String) {
         if (isEmailValid(email).isValid && isPasswordValid(password).isValid) {
             isLoadingLiveData.value = true
-            RxLearningApp.instance.auth.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener {
-                        if (it.isSuccessful) {
-                            signInLiveData.value = Unit
-                        } else {
-                            onErrorConsumer.accept(it.exception)
-                        }
-                    }
+            RxFirebaseAuth.signInWithEmailAndPassword(RxLearningApp.instance.auth, email, password)
+                    .subscribe({ signInLiveData.value = Unit }, onErrorConsumer::accept)
+                    .addTo(compositeDisposable)
         }
     }
 

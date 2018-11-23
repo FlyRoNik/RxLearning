@@ -6,6 +6,8 @@ import com.cleveroad.bootstrap.kotlin_validators.Validator
 import com.rxlearning.RxLearningApp
 import com.rxlearning.ui.base.BaseViewModel
 import com.rxlearning.utils.emailValidator
+import durdinapps.rxfirebase2.RxFirebaseAuth
+import io.reactivex.rxkotlin.addTo
 
 class ResetPasswordViewModel(application: Application) : BaseViewModel(application) {
     private val emailValidator: Validator by lazy { emailValidator(application) }
@@ -15,13 +17,9 @@ class ResetPasswordViewModel(application: Application) : BaseViewModel(applicati
     fun resetPassword(email: String) {
         if (isEmailValid(email).isValid) {
             isLoadingLiveData.value = true
-            RxLearningApp.instance.auth.sendPasswordResetEmail(email).addOnCompleteListener {
-                if (it.isSuccessful) {
-                    resetPasswordLiveData.postValue(Unit)
-                } else {
-                    onErrorConsumer.accept(it.exception)
-                }
-            }
+            RxFirebaseAuth.sendPasswordResetEmail(RxLearningApp.instance.auth, email)
+                    .subscribe({ resetPasswordLiveData.value = Unit }, onErrorConsumer::accept)
+                    .addTo(compositeDisposable)
         }
     }
 

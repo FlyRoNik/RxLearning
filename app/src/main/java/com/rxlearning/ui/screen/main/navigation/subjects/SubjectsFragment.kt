@@ -18,7 +18,12 @@ import kotlinx.android.synthetic.main.fragment_subjects.*
 import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.support.v4.toast
 
-class SubjectsFragment : BaseLifecycleFragment<SubjectsViewModel>(), SubjectAdapterCallback, SwipeRefreshLayout.OnRefreshListener {
+interface AddDSubjectButtonCallback {
+    fun onClick()
+}
+
+class SubjectsFragment : BaseLifecycleFragment<SubjectsViewModel>(), SubjectAdapterCallback,
+        SwipeRefreshLayout.OnRefreshListener, AddDSubjectButtonCallback {
     override val viewModelClass = SubjectsViewModel::class.java
     override val layoutId = R.layout.fragment_subjects
 
@@ -89,4 +94,8 @@ class SubjectsFragment : BaseLifecycleFragment<SubjectsViewModel>(), SubjectAdap
         if (ctx.isConnected()) viewModel.loadSubjects() else onError(NoNetworkException())
     }
 
+    override fun onClick() {
+        //TODO need implement
+        toast("Not implemented")
+    }
 }

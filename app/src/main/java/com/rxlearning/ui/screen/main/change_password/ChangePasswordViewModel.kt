@@ -9,6 +9,8 @@ import com.rxlearning.RxLearningApp
 import com.rxlearning.ui.base.BaseViewModel
 import com.rxlearning.utils.matchPasswordValidator
 import com.rxlearning.utils.passwordValidator
+import durdinapps.rxfirebase2.RxFirebaseUser
+import io.reactivex.rxkotlin.addTo
 
 class ChangePasswordViewModel(application: Application) : BaseViewModel(application) {
     private val matchPasswordValidator: MatchValidator by lazy { matchPasswordValidator(application) }
@@ -17,25 +19,16 @@ class ChangePasswordViewModel(application: Application) : BaseViewModel(applicat
     val changePasswordLiveData = MutableLiveData<Unit>()
 
     fun changePassword(password: String, newPassword: String, confirmPassword: String) {
-        if (isPasswordValid(password).isValid && isPasswordValid(newPassword, confirmPassword).isValid) {
+        val currentUser = RxLearningApp.instance.getCurrentUser()
+        if (isPasswordValid(password).isValid && isPasswordValid(newPassword, confirmPassword).isValid && currentUser != null) {
             isLoadingLiveData.value = true
-            RxLearningApp.instance.getCurrentUser()?.let { currentUser ->
-                currentUser.reauthenticate(EmailAuthProvider.getCredential(currentUser.email
-                        ?: "", password))
-                        .addOnCompleteListener {
-                            if (it.isSuccessful) {
-                                currentUser.updatePassword(newPassword).addOnCompleteListener {
-                                    if (it.isSuccessful) {
-                                        changePasswordLiveData.postValue(Unit)
-                                    } else {
-                                        onErrorConsumer.accept(it.exception)
-                                    }
-                                }
-                            } else {
-                                onErrorConsumer.accept(it.exception)
-                            }
-                        }
-            }
+            RxFirebaseUser.reAuthenticate(currentUser, EmailAuthProvider.getCredential(currentUser.email
+                    ?: "", password))
+                    .andThen(RxFirebaseUser.updatePassword(currentUser, newPassword))
+                    .subscribe({
+                        changePasswordLiveData.value = Unit
+                    }, onErrorConsumer::accept)
+                    .addTo(compositeDisposable)
         }
     }
 

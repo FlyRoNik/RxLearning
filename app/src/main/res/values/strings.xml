@@ -84,8 +84,7 @@
     <string name="title_privacy_policy">Privacy Policy</string>
 
     <!--navigation screen-->
-    <string name="item_home">HOME</string>
-    <string name="item_venues">VENUES</string>
+    <string name="item_tests">TEST</string>
     <string name="item_receipts">SUBJECTS</string>
     <string name="item_profile">PROFILE</string>
     <string name="item_settings">SETTINGS</string>

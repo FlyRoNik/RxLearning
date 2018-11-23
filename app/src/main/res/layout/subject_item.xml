@@ -9,24 +9,33 @@
     android:clickable="true"
     tools:ignore="KeyboardInaccessibleWidget">
 
-    <!--TODO add subject icon-->
-    <ImageView
-        android:layout_width="@dimen/image_size_24"
-        android:layout_height="@dimen/image_size_24"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="16dp"
-        tools:ignore="ContentDescription"/>
-
     <TextView
         android:id="@+id/tvSubjectName"
         style="@style/RobotoRegularCharcoalXXXXLargeTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginStart="60dp"
+        android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
         android:ellipsize="end"
         android:maxLines="1"
         tools:text="System"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_line_divider"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:background="@color/bg_black_1f"/>
+
+    <ImageView
+        android:layout_width="@dimen/image_size_24"
+        android:layout_height="@dimen/image_size_24"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="15dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_arrow_right_24dp"
+        tools:ignore="ContentDescription"/>
 
 </RelativeLayout>

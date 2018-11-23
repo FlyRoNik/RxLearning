@@ -29,7 +29,7 @@ class NavigationFragment : BaseLifecycleFragment<NavigationViewModel>(), Profile
     override val layoutId = R.layout.fragment_navigation
 
     companion object {
-        private const val PAGE_LIMIT = 5
+        private const val PAGE_LIMIT = 4
         private const val PAGE_WITH_FAB = 1
         fun newInstance() = NavigationFragment().apply {
             arguments = Bundle()
@@ -60,7 +60,7 @@ class NavigationFragment : BaseLifecycleFragment<NavigationViewModel>(), Profile
         }
         with(bnPagerController) {
             addItems(listOf(
-                    AHBottomNavigationItem(getString(R.string.item_home), R.drawable.ic_home_white_active_24dp),
+                    AHBottomNavigationItem(getString(R.string.item_tests), R.drawable.ic_edit_white_24dp),
                     AHBottomNavigationItem(getString(R.string.item_receipts), R.drawable.ic_receipts_white_active_24dp),
                     AHBottomNavigationItem(getString(R.string.item_profile), R.drawable.ic_profile_white_active_24dp),
                     AHBottomNavigationItem(getString(R.string.item_settings), R.drawable.ic_settings_white_active_24dp)
@@ -76,10 +76,9 @@ class NavigationFragment : BaseLifecycleFragment<NavigationViewModel>(), Profile
             ctx.resources.getDimension(R.dimen.xxxx_small_text).also { setTitleTextSize(it, it) }
             isBehaviorTranslationEnabled = true
         }
-
         //TODO callback for fab button
 //        fabLocationButton.setOnClickListener {
-//            bindInterface<BaseFragmentStatePagerAdapter, NavigationButtonCallback>(vpPagerContainer.adapter, { getFragment(PAGE_WITH_FAB) }) { onClick() }
+//            bindInterface<BaseFragmentStatePagerAdapter, AddDSubjectButtonCallback>(vpPagerContainer.adapter, { getFragment(PAGE_WITH_FAB) }) { onClick() }
 //        }
     }
 

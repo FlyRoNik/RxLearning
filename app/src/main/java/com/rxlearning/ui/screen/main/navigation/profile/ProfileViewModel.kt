@@ -4,23 +4,24 @@ import android.app.Application
 import android.arch.lifecycle.MutableLiveData
 import com.cleveroad.bootstrap.kotlin_validators.PhoneValidator
 import com.cleveroad.bootstrap.kotlin_validators.Validator
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.i18n.phonenumbers.PhoneNumberUtil
-import com.rxlearning.FIREBASE_RDB_USERS_KEY
 import com.rxlearning.RxLearningApp
 import com.rxlearning.extensions.removeSpaces
 import com.rxlearning.models.user.User
-import com.rxlearning.models.user.UserModel
+import com.rxlearning.network.USERS_KEY
+import com.rxlearning.network.bean.UserBean
+import com.rxlearning.network.converters.UserBeanConverterImpl
 import com.rxlearning.ui.base.BaseViewModel
 import com.rxlearning.utils.emailValidator
 import com.rxlearning.utils.nameValidator
 import com.rxlearning.utils.phoneValidator
+import durdinapps.rxfirebase2.RxFirestore
+import io.reactivex.rxkotlin.addTo
 import java.util.*
 
 class ProfileViewModel(application: Application) : BaseViewModel(application) {
+    private val userBeanConverter = UserBeanConverterImpl()
     private val emailValidator: Validator by lazy { emailValidator(application) }
     private val nameValidator: Validator by lazy { nameValidator(application) }
     private val phoneValidator: PhoneValidator by lazy { phoneValidator(application) }
@@ -38,19 +39,17 @@ class ProfileViewModel(application: Application) : BaseViewModel(application) {
             loadUserLiveData.value = it
         } ?: RxLearningApp.instance.getCurrentUser()?.let {
             isLoadingLiveData.value = true
-            FirebaseDatabase.getInstance().reference
-                    .child(FIREBASE_RDB_USERS_KEY)
-                    .child(it.uid)
-                    .addListenerForSingleValueEvent(object : ValueEventListener {
-                        override fun onDataChange(data: DataSnapshot) {
-                            user = data.getValue(UserModel::class.java)
+            val reference = FirebaseFirestore.getInstance()
+                    .collection(USERS_KEY)
+                    .document(it.uid)
+            RxFirestore.getDocument(reference)
+                    .subscribe({ doc ->
+                        doc.toObject(UserBean::class.java)?.let { bean ->
+                            user = userBeanConverter.convertInToOut(bean)
                             loadUserLiveData.postValue(user)
                         }
-
-                        override fun onCancelled(error: DatabaseError) {
-                            onErrorConsumer.accept(error.toException())
-                        }
-                    })
+                    }, onErrorConsumer::accept)
+                    .addTo(compositeDisposable)
         }
     }
 
